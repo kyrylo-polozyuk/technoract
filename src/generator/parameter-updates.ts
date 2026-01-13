@@ -260,10 +260,3 @@ export const updatePad = (
     0.33 + Math.random() * 0.1,
   )
 }
-
-export const updateChord = (
-  t: SafeTransactionBuilder,
-  pulverisateur: NexusEntity<"pulverisateur">,
-) => {
-  // TODO randomize some chord parameters
-}

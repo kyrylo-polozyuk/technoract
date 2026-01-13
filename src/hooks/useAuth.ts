@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react"
 
 // OIDC Configuration
 const CLIENT_ID = "3e9c5baa-2b66-49e7-8bab-4d977bc913eb"
-const REDIRECT_URL = "http://127.0.0.1:5173/"
+const REDIRECT_URL = import.meta.env.VITE_REDIRECT_URL || ""
 const SCOPE = "project:write"
 
 export type AuthStatus = "checking" | "logged-out" | "logged-in"

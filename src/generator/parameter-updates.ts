@@ -255,6 +255,7 @@ export const updatePad = (
     Math.random() * 0.33,
   )
   t.update(pulverisateur.fields.lfo.fields.waveform, Math.random() * 0.33)
+
   t.update(
     pulverisateur.fields.lfo.fields.rateNormalized,
     0.33 + Math.random() * 0.1,

@@ -1,0 +1,13 @@
+input {
+  padding: 8px;
+  border: 1px solid var(--placeholder-text);
+  border-radius: 8px;
+  width: 400px;
+  max-width: 100%;
+  background: var(--button-background);
+  color: var(--text);
+
+  &::placeholder {
+    color: var(--placeholder-text);
+  }
+}

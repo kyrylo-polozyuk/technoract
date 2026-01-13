@@ -1,0 +1,81 @@
+button {
+  --button-font-size: 0.8rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--button-background);
+  border-radius: 16px;
+  height: 32px;
+  min-width: 240px;
+  padding: 4px 8px;
+  background: var(--button-background);
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: var(--button-font-size);
+  line-height: var(--button-font-size);
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  color: var(--text);
+
+  .label {
+    flex-grow: 1;
+    text-align: left;
+  }
+
+  &.hug {
+    min-width: auto;
+  }
+
+  &:hover {
+    background: var(--button-highlight);
+  }
+
+  &:active {
+    background: var(--accent);
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+  }
+
+  &.primary {
+    background: var(--button-highlight);
+    &:hover {
+      background: var(--accent);
+    }
+  }
+
+  &.loading .material-symbols-outlined {
+    animation: rotate 1s linear infinite;
+  }
+
+  .shortcut {
+    margin-left: 8px;
+  }
+}
+
+.open-studio-button {
+  animation: pulsate 2s ease-in-out infinite;
+}
+
+@keyframes pulsate {
+  0%,
+  100% {
+    background: var(--button-background);
+  }
+  50% {
+    background: var(--button-highlight);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

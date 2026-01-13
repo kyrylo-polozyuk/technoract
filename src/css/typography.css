@@ -1,0 +1,53 @@
+:root {
+  *:not(.material-symbols-outlined) {
+    font-family: "Genos", sans-serif;
+  }
+}
+
+.secondary-text {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: var(--secondary-text);
+  text-transform: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 400;
+}
+
+p {
+  text-align: center;
+  margin: 0;
+
+  &.error {
+    color: var(--red);
+    font-size: 0.75rem;
+    line-height: 1rem;
+    min-height: 1rem;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: var(--accent);
+}
+
+ul,
+ol {
+  margin: 0;
+}
+
+blockquote {
+  margin: 0;
+  padding: 12px;
+  border-left: 4px solid var(--accent);
+  background: var(--button-background);
+  border-radius: 8px;
+  font-style: italic;
+  color: var(--secondary-text);
+}

@@ -1,0 +1,8 @@
+.visualiser {
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  mix-blend-mode: screen;
+}

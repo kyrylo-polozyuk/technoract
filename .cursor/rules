@@ -1,0 +1,94 @@
+# Code Guidelines
+
+These are code guidelines for submitting and reviewing pull requests in studio. Follow these conventions when writing or modifying code.
+
+# Code
+
+## TypeScript
+
+- Variable, interface, type, class names must be clear and descriptive. Avoid ambiguous or abbreviated names.
+
+```
+c: () => void // ❌
+successCallback: () => void // ✅
+
+service: Service // ❌
+trackService: TrackService // ✅
+```
+
+- Any rendering operations (PIXI or Html) should be inside `deferred` functions to reduce the load on the main thread.
+- If a constructor or a function has more than 3 arguments, put them into a single `props` object argument.
+- When passing `context` into constructors and functions, put it as the first argument. `props` argument must be separate and after the `context` argument.
+- Classes
+  - Methods and members should follow this order for easier class readability:
+
+    ```ts
+    class Foo {
+      readonly property
+      property
+
+      readonly #privateProperty
+      #privateProperty
+
+      constructor() {}
+
+      publicMethods()
+      #privateMethods()
+    }
+    ```
+
+    This helps to easily see how to interface with the instances of a class at a glance, while keeping the internal logic out of the way and in one place.
+
+  - Methods should be used sparingly. Without clear purpose/docstrings, a method could be depending on/modifying any class field, which can make the code hard to read & refactor. For private methods in particular, try to move out logic into pure methods whenever possible. Examples:
+
+    Bad:
+
+    ```ts
+    this.#update()
+    ```
+
+    Better:
+
+    ```ts
+    this.#addMissingChildrenFromYToX()
+    ```
+
+    Best:
+
+    ```ts
+    this.x = addMissingChildren(this.x, this.y)
+    // or, if x is an array/object/...
+    addMissingChildren(this.x, this.y)
+    ```
+
+    This will also allow you to test `addMissingChildren` separately in unit tests.
+
+- If there is duplicate or very similar code in multiple places. Try to extract it into pure reusable functions.
+- Try to avoid `enum`. Alternative: simple string unions `"foo" | "bar"`, or if needed, plain objects mapping strings to numbers, marked with `as const`.
+- Don't use `interface`, instead use `type`. The two are largely equivalent, but the codebase is cleaner if we stick to one.
+- Errors:
+  - use `throw` only if the error should be considered non-recoverable, and the studio should crash. Otherwise, return `=> {case: "error", error: Error} | {case: "ok", value: ...}` or similar, so we can avoid `try/catch` blocks.
+  - if you do use `throw` due to an error somewhere, add the original error as "cause" - don't serialize to string: `new Error("couldn't do this or that", {cause: error})`. "couldn't do this or that" should be descriptive enough to be able to find the error again (bad: `couldn't fetch`, good: `couldn't fetch sample .flac file`, which will show as: `couldn't fetch sample .flac file: http error 404`, for example).
+
+## CSS
+
+- Try to avoid using `z-index` . Layering problems can usually be solved by container positioning and element ordering.
+  If z-index is inevitable, make sure you put it into a [stacking context](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_positioned_layout/Stacking_context).
+- Try to use predefined variables from `imported-vars.css` as much as possible. This allows us to easily replace sizes and colors everywhere in the app at once.
+- Use classes from `typography.css` to style text.
+- Use nesting for easier readability. Especially the selector: "&".
+
+## Prettier
+
+- Code should always be formatted with Prettier after saving
+
+## Eslint
+
+- Make sure there are no eslint errors after completing a prompt with 'npm run eslint'
+- Do not ever use "eslint-disable" anywhere. If you can't resolve an eslint error by following code guidelines, then just inform me of the errors.
+
+## Unit Tests
+
+- Make sure unit tests are passing by running 'npm run test'
+
+If something cannot be done the way I've asked, please just let me know of the problems and files in which they occur instead of trying other solutions.

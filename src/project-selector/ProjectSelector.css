@@ -1,0 +1,39 @@
+.project-selector-container {
+  max-width: 600px;
+  padding: 24px;
+}
+
+.project-selector-intro {
+  text-align: center;
+}
+
+.project-selector-step-text {
+  text-align: left;
+  width: 100%;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+.project-selector-step-text strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.project-selector-step-text-italic {
+  text-align: left;
+  width: 100%;
+  font-style: italic;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--secondary-text);
+}
+
+.project-selector-code {
+  font-size: 0.85rem;
+  opacity: 0.9;
+  font-family: monospace;
+  background: var(--button-background);
+  padding: 2px 6px;
+  border-radius: 4px;
+}

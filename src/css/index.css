@@ -1,0 +1,127 @@
+@font-face {
+  font-family: "Material Symbols Outlined";
+  font-style: normal;
+  src: url("../assets/material-symbols.woff2") format("woff");
+}
+
+.material-symbols-outlined {
+  font-family: "Material Symbols Outlined";
+  font-style: normal;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-feature-settings: "liga";
+  -webkit-font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+
+  &.flip-h {
+    transform: scale(-1, 1);
+  }
+
+  &.flip-v {
+    transform: scale(1, -1);
+  }
+}
+
+:root {
+  height: 100%;
+  margin: 0;
+
+  --accent: #7f92ac;
+  --accent-background: #1c1c1c;
+  --button-background: #ffffff11;
+  --button-highlight: #ffffff33;
+  --text: #f0f0ef;
+  --background: #0b0b0b;
+  --red: #f02222;
+  --placeholder-text: #ffffff88;
+  --secondary-text: #ffffffaa;
+
+  color: var(--text);
+
+  * {
+    box-sizing: border-box;
+  }
+
+  font-size: 19px;
+}
+
+#root {
+  height: 100%;
+  overflow: auto;
+  padding: 4px 8px;
+}
+
+.blur {
+  backdrop-filter: blur(10px);
+}
+
+body {
+  position: relative;
+  height: 100%;
+  margin: 0;
+  background: linear-gradient(
+    0deg,
+    var(--background),
+    var(--accent-background)
+  );
+}
+
+.top-bar {
+  height: 40px;
+
+  .title {
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+  }
+}
+
+.title-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.app-container {
+  position: relative;
+}
+
+.error {
+  font-size: 0.9rem;
+  color: var(--secondary-text);
+}
+
+/* Custom Scrollbar Styles */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--button-highlight) var(--button-background);
+}
+
+*::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--button-background);
+  border-radius: 6px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--button-highlight);
+  border-radius: 6px;
+  border: 2px solid var(--button-background);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}

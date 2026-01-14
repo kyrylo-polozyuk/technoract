@@ -1,4 +1,4 @@
-import { Ticks } from "@audiotool/nexus"
+import { Ticks } from "@audiotool/nexus/utils"
 
 export const BASS_TRANSPOSE_AMOUNT = [-7, -5, -4, 0, 3, 5, 7] as const
 export const PAD_TRANSPOSE_AMOUNT = [0, 3, 5, 7, 10, 12, 14] as const

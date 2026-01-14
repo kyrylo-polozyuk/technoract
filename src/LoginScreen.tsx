@@ -1,4 +1,4 @@
-import type { LoginStatus } from "@audiotool/nexus/utils"
+import type { LoginStatus } from "@audiotool/nexus"
 import { type AuthStatus } from "./hooks/useAuth"
 
 type LoginScreenProps = {

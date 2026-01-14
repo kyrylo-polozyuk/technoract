@@ -1,8 +1,8 @@
-import { Ticks } from "@audiotool/nexus"
 import type {
   NexusEntity,
   SafeTransactionBuilder,
 } from "@audiotool/nexus/document"
+import { Ticks } from "@audiotool/nexus/utils"
 import { generateLoopDuration } from "../../pattern-util"
 import type { BassEntities, MidiEntities } from "../../types"
 import { BASS_TRANSPOSE_AMOUNT, REGION_DURATION_TICKS } from "../const"

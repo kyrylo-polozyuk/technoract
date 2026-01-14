@@ -1,8 +1,8 @@
+import type { SyncedDocument } from "@audiotool/nexus"
 import {
   type NexusEntity,
   type NexusObject,
   type SafeTransactionBuilder,
-  type SyncedDocument,
 } from "@audiotool/nexus/document"
 import type { MachinisteChannel } from "@audiotool/nexus/entities"
 import { ORDERED_SAMPLE_KEYS, SAMPLES } from "../const"

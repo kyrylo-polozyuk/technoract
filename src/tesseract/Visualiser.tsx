@@ -1,4 +1,4 @@
-import { Ticks } from "@audiotool/nexus";
+
 import { useEffect, useRef, useState } from "react";
 import type { GeneratorService } from "../generator/service";
 import type { SampleKey, TechnoState } from "../types";
@@ -7,6 +7,7 @@ import { AXES, create90DegreeRegularShape, INIT_POSITION, type Axis, type Shape 
 import { drawScene, type Scene } from "./renderer";
 import type { Camera } from "./types";
 import "./Visualiser.css";
+import { Ticks } from "@audiotool/nexus/utils";
 
 const FOV = 1.0025;
 const SHAPE_SIDE_SIZE = 200;

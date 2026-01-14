@@ -1,9 +1,12 @@
-import { getLoginStatus, type LoginStatus } from "@audiotool/nexus/utils"
+import { getLoginStatus, type LoginStatus } from "@audiotool/nexus"
 import { useEffect, useRef, useState } from "react"
 
 // OIDC Configuration
 const CLIENT_ID = "3e9c5baa-2b66-49e7-8bab-4d977bc913eb"
-const REDIRECT_URL = import.meta.env.VITE_REDIRECT_URL || ""
+const REDIRECT_URL =
+  import.meta.env.MODE === "development"
+    ? "http://127.0.0.1:5173/"
+    : "https://kyrylo-polozyuk.github.io/technoract/"
 const SCOPE = "project:write"
 
 export type AuthStatus = "checking" | "logged-out" | "logged-in"
@@ -31,9 +34,9 @@ export const useAuth = (): UseAuthReturn => {
       return
     }
     hasInitialized.current = true
-
+    console.debug("REDIRECT_URL", REDIRECT_URL)
     const initializeLoginStatus = async () => {
-      const loginStatusResult = await getLoginStatus({
+      const loginStatusResult: LoginStatus = await getLoginStatus({
         clientId: CLIENT_ID,
         redirectUrl: REDIRECT_URL,
         scope: SCOPE,

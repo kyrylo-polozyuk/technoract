@@ -1,4 +1,4 @@
-import { Ticks } from "@audiotool/nexus"
+import { Ticks } from "@audiotool/nexus/utils"
 import { KICK_LOOP_DURATION_CONFIG } from "../pattern-util"
 import type { MidiEntities } from "../types"
 

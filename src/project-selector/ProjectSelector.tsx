@@ -3,7 +3,7 @@ import {
   type AudiotoolClient,
   type SyncedDocument,
 } from "@audiotool/nexus"
-import type { LoginStatus } from "@audiotool/nexus/utils"
+import type { LoginStatus } from "@audiotool/nexus"
 import { useCallback, useEffect, useState } from "react"
 import { extractProjectId } from "../state-persistence"
 import { ProjectList } from "./ProjectList"

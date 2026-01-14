@@ -1,8 +1,8 @@
+import type { SyncedDocument } from "@audiotool/nexus"
 import type {
   EntityTypeKey,
   NexusEntity,
   SafeTransactionBuilder,
-  SyncedDocument,
 } from "@audiotool/nexus/document"
 import { TechnoStateSchema } from "./schemas"
 import { type SerializedEntity, type TechnoState } from "./types"

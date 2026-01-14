@@ -1,8 +1,8 @@
-import { Ticks } from "@audiotool/nexus"
 import type {
   NexusEntity,
   SafeTransactionBuilder,
 } from "@audiotool/nexus/document"
+import { Ticks } from "@audiotool/nexus/utils"
 import {
   METHOD_BY_SAMPLE,
   ORDERED_SAMPLE_KEYS,

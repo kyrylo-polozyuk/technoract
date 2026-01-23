@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@audiotool/nexus": "^0.0.8",
+    "@audiotool/nexus": "^0.0.10",
     "prettier-plugin-organize-imports": "^4.2.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",

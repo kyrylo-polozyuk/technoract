@@ -1,9 +1,9 @@
+import type { LoginStatus } from "@audiotool/nexus"
 import {
   createAudiotoolClient,
   type AudiotoolClient,
   type SyncedDocument,
 } from "@audiotool/nexus"
-import type { LoginStatus } from "@audiotool/nexus"
 import { useCallback, useEffect, useState } from "react"
 import { extractProjectId } from "../state-persistence"
 import { ProjectList } from "./ProjectList"
@@ -13,7 +13,7 @@ interface ProjectSelectorProps {
   loginStatus: LoginStatus | undefined
   onProjectConnected: (
     client: AudiotoolClient,
-    nexus: SyncedDocument,
+    syncedDocument: SyncedDocument,
     projectUrl: string,
   ) => void
   onProjectUrlChange: (projectUrl: string) => void
@@ -60,14 +60,14 @@ export const ProjectSelector = ({
       )
 
       try {
-        const nexus = await client.createSyncedDocument({
+        const syncedDocument = await client.createSyncedDocument({
           mode: "online",
           project: projectId,
         })
 
         // Start syncing
-        await nexus.start()
-        onProjectConnected(client, nexus, currentUrl.trim())
+        await syncedDocument.start()
+        onProjectConnected(client, syncedDocument, currentUrl.trim())
         setLoading(false)
       } catch (e) {
         setLoading(false)

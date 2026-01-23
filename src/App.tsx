@@ -16,7 +16,9 @@ export const App = () => {
   const { loginStatus, authStatus, loading, authError } = useAuth()
 
   const [client, setClient] = useState<AudiotoolClient | undefined>(undefined)
-  const [nexus, setNexus] = useState<SyncedDocument | undefined>(undefined)
+  const [syncedDocument, setSyncedDocument] = useState<
+    SyncedDocument | undefined
+  >(undefined)
   const [projectUrl, setProjectUrl] = useState<string>("")
   const [service, setService] = useState<GeneratorService | undefined>(
     undefined,
@@ -24,12 +26,12 @@ export const App = () => {
 
   // create generator service when client and nexus are connected
   useEffect(() => {
-    if (client !== undefined && nexus !== undefined) {
-      setService(new GeneratorService({ client, nexus }))
+    if (client !== undefined && syncedDocument !== undefined) {
+      setService(new GeneratorService({ client, nexus: syncedDocument }))
     } else {
       setService(undefined)
     }
-  }, [client, nexus])
+  }, [client, syncedDocument])
 
   // Read projectUrl from URL parameters on mount
   useEffect(() => {
@@ -46,7 +48,7 @@ export const App = () => {
     }
 
     // Clear client and nexus connections
-    setNexus(undefined)
+    setSyncedDocument(undefined)
     setClient(undefined)
     setService(undefined)
 
@@ -103,13 +105,13 @@ export const App = () => {
     return trimmed
   }
 
-  const handleProjectConnected = (
+  const handleProjectConnected = async (
     client: AudiotoolClient,
-    nexus: SyncedDocument,
+    newDocument: SyncedDocument,
     projectUrl: string,
   ) => {
     setClient(client)
-    setNexus(nexus)
+    setSyncedDocument(newDocument)
     setProjectUrl(projectUrl)
   }
 
@@ -120,7 +122,7 @@ export const App = () => {
     }
 
     // Show project connection screen if authenticated but not connected
-    if (nexus === undefined) {
+    if (syncedDocument === undefined) {
       return (
         <ProjectSelector
           loginStatus={loginStatus}
@@ -143,8 +145,8 @@ export const App = () => {
     <DialogProvider>
       <ErrorHandler />
       <ErrorBoundary>
-        <AudiotoolContext.Provider value={{ client, nexus }}>
-          {nexus !== undefined &&
+        <AudiotoolContext.Provider value={{ client, nexus: syncedDocument }}>
+          {syncedDocument !== undefined &&
             client !== undefined &&
             service !== undefined && (
               <Visualiser service={service}></Visualiser>
@@ -157,11 +159,11 @@ export const App = () => {
               </div>
               {authStatus === "logged-in" && (
                 <div className="user-info">
-                  {nexus && client && projectUrl && (
+                  {syncedDocument && client && projectUrl && (
                     <>
                       <button
                         className="hug"
-                        onClick={() => {
+                        onClick={async () => {
                           const params = new URLSearchParams(
                             window.location.search,
                           )
@@ -171,8 +173,11 @@ export const App = () => {
                             "",
                             `${window.location.pathname}?${params.toString()}`,
                           )
+                          if (syncedDocument !== undefined) {
+                            await syncedDocument.stop()
+                          }
                           setClient(undefined)
-                          setNexus(undefined)
+                          setSyncedDocument(undefined)
                         }}
                       >
                         <span className="material-symbols-outlined">

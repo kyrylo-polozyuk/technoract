@@ -16,7 +16,7 @@ import {
   saveTechnoStateToLocalStorage,
 } from "../state-persistence"
 import type { TechnoState } from "../types"
-import { NOTES } from "./const"
+import { NOTES, REGION_DURATION_TICKS } from "./const"
 import type { GeneratorService } from "./service"
 
 export const Generator = (props: {
@@ -29,6 +29,26 @@ export const Generator = (props: {
 
   useEffect(() => {
     if (props.projectUrl && context.nexus) {
+      // check if config exists
+      context.nexus.modify((t) => {
+        if (t.entities.ofTypes("config").get().length === 0) {
+          const groove = t.create("groove", {
+            displayName: "Default Groove",
+            durationTicks: 1920,
+            impact: 0.2,
+            functionIndex: 1,
+          })
+          t.create("config", {
+            tempoBpm: 120,
+            baseFrequencyHz: 440,
+            signatureNumerator: 4,
+            signatureDenominator: 4,
+            durationTicks: REGION_DURATION_TICKS,
+            defaultGroove: groove.location,
+          })
+        }
+      })
+
       loadTechnoStateFromLocalStorage(context.nexus, props.projectUrl).then(
         (technoState) => {
           if (technoState !== undefined) {

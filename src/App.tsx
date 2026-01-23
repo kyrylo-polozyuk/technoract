@@ -202,7 +202,6 @@ export const App = () => {
                       </button>
                     </>
                   )}
-                  {/* <span>{userName}</span> */}
                   <button className="hug" onClick={handleLogout}>
                     <span className="material-symbols-outlined">logout</span>
                     <span>Log out</span>

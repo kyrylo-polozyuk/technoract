@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import { DrumPatternButton } from "../buttons/DrumPatternButton"
-import { SynthButton } from "../buttons/SyncButton"
+import { SynthButton } from "../buttons/SynthButton"
 import {
   ORDERED_SAMPLE_KEYS,
   SAMPLE_SHORTCUTS,
@@ -13,7 +13,7 @@ import {
   clearTechnoStateFromLocalStorage,
   loadTechnoStateFromLocalStorage,
   saveTechnoStateToLocalStorage,
-} from "../state-persistence"
+} from "../statePersistence"
 import type { TechnoState } from "../types"
 import { NOTES, REGION_DURATION_TICKS } from "./const"
 import type { GeneratorService } from "./service"

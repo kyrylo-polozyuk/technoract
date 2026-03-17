@@ -6,14 +6,14 @@ import {
   createSampleMidi,
   creteSynthMidiState,
   makeTechno,
-} from "./nexus-util"
+} from "./nexusUtil"
 import {
   updateChannelBySample,
   updateMachinisteChannelsBySample,
-} from "./parameter-updates"
-import { createBass, createBassMidi } from "./setup/create-bass"
-import { createMachinisteMixerChannel } from "./setup/create-machiniste"
-import { createPad, createPadMidi } from "./setup/create-pad"
+} from "./parameterUpdates"
+import { createBass, createBassMidi } from "./setup/createBass"
+import { createMachinisteMixerChannel } from "./setup/createMachiniste"
+import { createPad, createPadMidi } from "./setup/createPad"
 
 export class GeneratorService {
   #context: AudiotoolContextType

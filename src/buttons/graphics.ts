@@ -1,5 +1,5 @@
 import { Ticks } from "@audiotool/nexus/utils"
-import { KICK_LOOP_DURATION_CONFIG } from "../pattern-util"
+import { KICK_LOOP_DURATION_CONFIG } from "../patternUtil"
 import type { MidiEntities } from "../types"
 
 export const CANVAS_PADDING = 4

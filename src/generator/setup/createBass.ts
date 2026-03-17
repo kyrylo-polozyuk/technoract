@@ -3,11 +3,11 @@ import type {
   SafeTransactionBuilder,
 } from "@audiotool/nexus/document"
 import { Ticks } from "@audiotool/nexus/utils"
-import { generateLoopDuration } from "../../pattern-util"
+import { generateLoopDuration } from "../../patternUtil"
 import type { BassEntities, MidiEntities } from "../../types"
 import { BASS_TRANSPOSE_AMOUNT, REGION_DURATION_TICKS } from "../const"
-import { getNextColorIndex, getNextTrackOrder } from "../nexus-util"
-import { updateBass, updateBassPulsar } from "../parameter-updates"
+import { getNextColorIndex, getNextTrackOrder } from "../nexusUtil"
+import { updateBass, updateBassPulsar } from "../parameterUpdates"
 
 export const createBassMidi = (
   t: SafeTransactionBuilder,

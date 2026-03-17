@@ -11,13 +11,13 @@ import type {
   SampleKey,
   SampleMixerEntities,
 } from "../../types"
-import { getNextColorIndex } from "../nexus-util"
+import { getNextColorIndex } from "../nexusUtil"
 import {
   updateAux1RouteBySample,
   updateAux2RouteBySample,
   updateAux3RouteBySample,
   updateChannelBySample,
-} from "../parameter-updates"
+} from "../parameterUpdates"
 
 export const createMachinisteMixerChannels = (
   t: SafeTransactionBuilder,

@@ -7,7 +7,7 @@ import {
 import type { MachinisteChannel } from "@audiotool/nexus/entities"
 import { ORDERED_SAMPLE_KEYS, SAMPLES } from "../const"
 import type { AudiotoolContextType } from "../context"
-import { createPopulatedNoteCollection } from "../pattern-util"
+import { createPopulatedNoteCollection } from "../patternUtil"
 import type {
   AuxDelayEntities,
   AuxFlangerEntities,
@@ -26,14 +26,14 @@ import { REGION_DURATION_TICKS } from "./const"
 import {
   updateFlanger,
   updateMachinisteChannelsBySample,
-} from "./parameter-updates"
-import { createBass, createBassMidi } from "./setup/create-bass"
+} from "./parameterUpdates"
+import { createBass, createBassMidi } from "./setup/createBass"
 import {
   createMachiniste,
   createMachinisteGroupCompressor,
   createMachinisteMixerChannels,
-} from "./setup/create-machiniste"
-import { createPad, createPadMidi } from "./setup/create-pad"
+} from "./setup/createMachiniste"
+import { createPad, createPadMidi } from "./setup/createPad"
 
 export const clearProject = async (context: AudiotoolContextType) => [
   await context.nexus?.modify((t) => {

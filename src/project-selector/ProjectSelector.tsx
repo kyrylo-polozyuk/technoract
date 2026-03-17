@@ -5,7 +5,7 @@ import {
   type SyncedDocument,
 } from "@audiotool/nexus"
 import { useCallback, useEffect, useState } from "react"
-import { extractProjectId } from "../state-persistence"
+import { extractProjectId } from "../statePersistence"
 import { ProjectList } from "./ProjectList"
 import "./ProjectSelector.css"
 

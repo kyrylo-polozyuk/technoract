@@ -3,11 +3,11 @@ import type {
   SafeTransactionBuilder,
 } from "@audiotool/nexus/document"
 import { Ticks } from "@audiotool/nexus/utils"
-import { generateLoopDuration } from "../../pattern-util"
+import { generateLoopDuration } from "../../patternUtil"
 import type { MidiEntities, PadEntities } from "../../types"
 import { PAD_TRANSPOSE_AMOUNT, REGION_DURATION_TICKS } from "../const"
-import { getNextColorIndex, getNextTrackOrder } from "../nexus-util"
-import { updatePad } from "../parameter-updates"
+import { getNextColorIndex, getNextTrackOrder } from "../nexusUtil"
+import { updatePad } from "../parameterUpdates"
 
 export const createPad = (
   t: SafeTransactionBuilder,

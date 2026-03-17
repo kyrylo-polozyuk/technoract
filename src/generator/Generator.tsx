@@ -1,4 +1,3 @@
-import type { PrimitiveField } from "@audiotool/nexus/document"
 import { useContext, useEffect, useState } from "react"
 import { DrumPatternButton } from "../buttons/DrumPatternButton"
 import { SynthButton } from "../buttons/SyncButton"
@@ -130,54 +129,6 @@ export const Generator = (props: {
       props.service.randomizeNotes(),
     )
   }, [context.nexus, props.service])
-
-  // Sync animation duration with BPM
-  useEffect(() => {
-    if (context.nexus === undefined) {
-      // Reset to default if no nexus
-      document.documentElement.style.setProperty(
-        "--title-animation-duration",
-        "10s",
-      )
-      return
-    }
-
-    let tempoBpmField: PrimitiveField<number, "mut"> | undefined
-    let unsubscribe: { terminate: () => void } | undefined
-
-    const updateVariable = (tempoBpm: number) => {
-      const durationSeconds = (60 / tempoBpm) * 4 * 16
-      document.documentElement.style.setProperty(
-        "--title-animation-duration",
-        `${durationSeconds}s`,
-      )
-    }
-
-    // Get config entity and set up subscription
-    context.nexus.modify((t) => {
-      const config = t.entities.ofTypes("config").getOne()
-
-      if (config !== undefined) {
-        tempoBpmField = config.fields.tempoBpm
-        updateVariable(tempoBpmField.value)
-
-        // Subscribe to tempoBpm field changes if we found the config
-        if (tempoBpmField !== undefined) {
-          unsubscribe?.terminate()
-          unsubscribe = context.nexus?.events.onUpdate(
-            tempoBpmField,
-            (value) => {
-              updateVariable(value)
-            },
-          )
-        }
-      }
-    })
-
-    return () => {
-      unsubscribe?.terminate()
-    }
-  }, [context.nexus])
 
   const renderDrumButtons = (technoState: TechnoState | undefined) => {
     if (technoState === undefined) {

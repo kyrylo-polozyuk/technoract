@@ -33,11 +33,14 @@ export default tseslint.config([
       "@typescript-eslint/no-unsafe-argument": "error",
 
       // Ensure proper callback return types
-      "@typescript-eslint/no-misused-promises": ["error", {
-        checkVoidReturn: {
-          attributes: false
+      "@typescript-eslint/no-misused-promises": [
+        "error",
+        {
+          "checksVoidReturn": {
+            "attributes": false
+          }
         }
-      }],
+      ]
     },
   },
 ])

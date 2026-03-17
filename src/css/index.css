@@ -16,14 +16,6 @@
   font-feature-settings: "liga";
   -webkit-font-feature-settings: "liga";
   -webkit-font-smoothing: antialiased;
-
-  &.flip-h {
-    transform: scale(-1, 1);
-  }
-
-  &.flip-v {
-    transform: scale(1, -1);
-  }
 }
 
 :root {

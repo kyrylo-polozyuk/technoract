@@ -5,7 +5,10 @@ import {
   type SyncedDocument,
 } from "@audiotool/nexus"
 import { useCallback, useEffect, useState } from "react"
-import { extractProjectId } from "../statePersistence"
+import {
+  extractProjectId,
+  openAudiotoolInWindow,
+} from "../statePersistence"
 import { ProjectList } from "./ProjectList"
 import "./ProjectSelector.css"
 
@@ -83,10 +86,7 @@ export const ProjectSelector = ({
 
   const handleProjectSelected = (projectId: string) => {
     const projectUrl = `https://beta.audiotool.com/studio?project=${projectId}`
-    window.open(
-      `https://beta.audiotool.com/studio?project=${projectId}`,
-      "_blank",
-    )
+    openAudiotoolInWindow(projectUrl)
     void connectToProject(projectUrl)
   }
 
@@ -145,10 +145,7 @@ export const ProjectSelector = ({
     const projectId = response.project.name.replace("projects/", "")
     const projectUrl = `https://beta.audiotool.com/studio?project=${projectId}`
     onProjectUrlChange(projectUrl)
-    window.open(
-      `https://beta.audiotool.com/studio?project=${projectId}`,
-      "_blank",
-    )
+    openAudiotoolInWindow(projectUrl)
     void connectToProject(projectUrl)
   }
 

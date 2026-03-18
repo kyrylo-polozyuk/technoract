@@ -10,6 +10,7 @@ import { GeneratorService } from "./generator/service"
 import { useAuth } from "./hooks/useAuth"
 import { LoginScreen } from "./LoginScreen"
 import { ProjectSelector } from "./project-selector/ProjectSelector"
+import { extractProjectId, openAudiotoolInWindow } from "./statePersistence"
 import { Visualiser } from "./tesseract/Visualiser"
 
 export const App = () => {
@@ -59,50 +60,6 @@ export const App = () => {
     window.history.replaceState({}, "", window.location.pathname)
 
     loginStatus?.logout()
-  }
-
-  // Extract project ID from URL or return as-is if it's already just an ID
-  // (kept here for use in "Open Studio" button)
-  const extractProjectId = (input: string): string => {
-    const trimmed = input.trim()
-
-    // If it's already just an ID (no URL structure), return as-is
-    if (
-      !trimmed.includes("://") &&
-      !trimmed.includes("/") &&
-      !trimmed.includes("?")
-    ) {
-      return trimmed
-    }
-
-    try {
-      const url = new URL(trimmed)
-      // Check for project parameter in query string
-      const projectParam = url.searchParams.get("project")
-      if (projectParam) {
-        return projectParam
-      }
-
-      // Check if the pathname contains a project ID (e.g., /studio/PROJECT_ID or /project/PROJECT_ID)
-      const pathParts = url.pathname.split("/").filter(Boolean)
-      const projectIndex = pathParts.findIndex(
-        (part) => part === "studio" || part === "project",
-      )
-      if (projectIndex !== -1 && pathParts[projectIndex + 1]) {
-        return pathParts[projectIndex + 1]
-      }
-
-      // If no project found in URL, return the last path segment as fallback
-      if (pathParts.length > 0) {
-        return pathParts[pathParts.length - 1]
-      }
-    } catch {
-      // If URL parsing fails, assume it's already a project ID
-      return trimmed
-    }
-
-    // Fallback: return trimmed input
-    return trimmed
   }
 
   const handleProjectConnected = async (
@@ -189,10 +146,8 @@ export const App = () => {
                         className="hug open-studio-button"
                         onClick={() => {
                           const projectId = extractProjectId(projectUrl)
-                          window.open(
-                            `https://beta.audiotool.com/studio?project=${projectId}`,
-                            "_blank",
-                          )
+                          const url = `https://beta.audiotool.com/studio?project=${projectId}`
+                          openAudiotoolInWindow(url)
                         }}
                       >
                         <span className="material-symbols-outlined">

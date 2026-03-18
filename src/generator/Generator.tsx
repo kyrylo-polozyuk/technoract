@@ -12,6 +12,7 @@ import { createKeyboardShortcutHandler } from "../hooks/useKeyboardShortcut"
 import {
   clearTechnoStateFromLocalStorage,
   loadTechnoStateFromLocalStorage,
+  openAudiotoolInWindow,
   saveTechnoStateToLocalStorage,
 } from "../statePersistence"
 import type { TechnoState } from "../types"
@@ -83,7 +84,14 @@ export const Generator = (props: {
           <ol>
             <li>
               Open currently connected project in{" "}
-              <a href={projectUrl} target="_blank">
+              <a
+                href={projectUrl}
+                onClick={(e) => {
+                  e.preventDefault()
+                  openAudiotoolInWindow(projectUrl)
+                }}
+                rel="noreferrer"
+              >
                 Audiotool Studio{" "}
                 <span className="material-symbols-outlined">open_in_new</span>
               </a>{" "}
@@ -120,7 +128,7 @@ export const Generator = (props: {
   // Handle spacebar press to randomize
   useEffect(() => {
     return createKeyboardShortcutHandler(" ", () =>
-      props.service.randomizeAll(),
+      void props.service.randomizeAll(),
     )
   }, [context.nexus, props.service])
 

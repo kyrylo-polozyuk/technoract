@@ -1,5 +1,7 @@
 import { type AudiotoolClient, type SyncedDocument } from "@audiotool/nexus"
 import { useEffect, useState } from "react"
+import { LuGlobe } from "react-icons/lu"
+import { SiBandcamp, SiGithub, SiInstagram, SiSoundcloud } from "react-icons/si"
 import projectIcon from "./assets/technoract.svg"
 import { AudiotoolContext } from "./context"
 import { DialogProvider } from "./dialog/DialogContext"
@@ -173,17 +175,69 @@ export const App = () => {
               />
               {getAppContents()}
             </div>
-            <div className="row full-width blur">
-              <p>
-                Created by{" "}
-                <a href="https://www.audiotool.com/user/kepz" target="_blank">
-                  Kepz
+            <div className="row full-width blur footer">
+              <div className="footer-credit">
+                <p>
+                  Created by{" "}
+                  <a
+                    href="https://www.audiotool.com/user/kepz"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Kepz
+                  </a>
+                  . Using{" "}
+                  <a
+                    href="https://developer.audiotool.com/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Audiotool SDK
+                  </a>
+                </p>
+              </div>
+              <div className="footer-social">
+                <a
+                  href="https://www.instagram.com/kooscha.music"
+                  target="_blank"
+                  rel="noreferrer"
+                  title="Instagram"
+                >
+                  <SiInstagram size={18} className="icon" />
                 </a>
-                . Using{" "}
-                <a href="https://developer.audiotool.com/" target="_blank">
-                  Audiotool SDK
+                <a
+                  href="https://www.soundcloud.com/kooscha"
+                  target="_blank"
+                  rel="noreferrer"
+                  title="Soundcloud"
+                >
+                  <SiSoundcloud size={18} className="icon" />
                 </a>
-              </p>
+                <a
+                  href="https://kooscha.bandcamp.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  title="Bandcamp"
+                >
+                  <SiBandcamp size={18} className="icon" />
+                </a>
+                <a
+                  href="https://www.audiotool.com/user/kepz/music"
+                  target="_blank"
+                  rel="noreferrer"
+                  title="Audiotool"
+                >
+                  <LuGlobe size={18} className="icon" />
+                </a>
+                <a
+                  href="https://github.com/kyrylo-polozyuk"
+                  target="_blank"
+                  rel="noreferrer"
+                  title="GitHub"
+                >
+                  <SiGithub size={18} className="icon" />
+                </a>
+              </div>
             </div>
           </div>
         </AudiotoolContext.Provider>

@@ -44,7 +44,7 @@
 #root {
   height: 100%;
   overflow: auto;
-  padding: 4px 8px;
+  padding: 0.5rem 1rem;
 }
 
 .blur {
@@ -90,6 +90,28 @@ body {
 .error {
   font-size: 0.9rem;
   color: var(--secondary-text);
+}
+
+.footer {
+  a {
+    white-space: nowrap;
+  }
+
+  & .footer-social {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    & a {
+      color: var(--secondary-text);
+      transition: color 0.2s;
+
+      &:hover {
+        color: var(--text);
+      }
+    }
+  }
 }
 
 /* Custom Scrollbar Styles */

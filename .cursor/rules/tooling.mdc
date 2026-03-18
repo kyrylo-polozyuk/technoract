@@ -1,0 +1,10 @@
+---
+description: Lint and format
+alwaysApply: true
+---
+
+# Tooling
+
+- Run `npm run lint` and fix errors before finishing.
+- No `eslint-disable`.
+- Format with Prettier.

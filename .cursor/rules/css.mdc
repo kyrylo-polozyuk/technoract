@@ -1,0 +1,11 @@
+---
+description: CSS conventions
+globs: "**/*.css"
+alwaysApply: false
+---
+
+# CSS
+
+- Nest with `&`. Put `.child` inside `.parent`, not `.parent .child`.
+- Use variables from `src/css/variables.css` for colors.
+- Avoid `z-index` when possible.

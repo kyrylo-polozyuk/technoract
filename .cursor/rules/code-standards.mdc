@@ -1,0 +1,13 @@
+---
+description: TypeScript and React conventions
+globs: "**/*.{ts,tsx}"
+alwaysApply: false
+---
+
+# Code
+
+- Use clear names. No abbreviations like `c` for callback.
+- Use `type`, not `interface`.
+- Prefer `"foo" | "bar"` over `enum`.
+- Use functional components and hooks.
+- Extract repeated logic into reusable functions.

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kyrylo-polozyuk.github.io/technoract/sitemap.xml

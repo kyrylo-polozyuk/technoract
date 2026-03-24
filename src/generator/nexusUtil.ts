@@ -110,6 +110,7 @@ export const createAuxDelay = (
     t.create("desktopAudioCable", {
       fromSocket: aux1.fields.insertOutput.location,
       toSocket: pulsar.fields.audioInput.location,
+      colorIndex: getNextColorIndex(),
     })
 
   const audioCableOut =
@@ -117,6 +118,7 @@ export const createAuxDelay = (
     t.create("desktopAudioCable", {
       fromSocket: pulsar.fields.audioOutput.location,
       toSocket: aux1.fields.insertInput.location,
+      colorIndex: getNextColorIndex(),
     })
 
   return { pulsar, audioCableIn, audioCableOut }
@@ -145,6 +147,7 @@ export const createAuxReverb = (
     t.create("desktopAudioCable", {
       fromSocket: aux3.fields.insertOutput.location,
       toSocket: quasar.fields.audioInput.location,
+      colorIndex: getNextColorIndex(),
     })
 
   const audioCableOut =
@@ -152,6 +155,7 @@ export const createAuxReverb = (
     t.create("desktopAudioCable", {
       fromSocket: quasar.fields.audioOutput.location,
       toSocket: aux3.fields.insertInput.location,
+      colorIndex: getNextColorIndex(),
     })
 
   return { quasar, audioCableIn, audioCableOut }
@@ -204,6 +208,7 @@ export const createMasterInsertChain = (
     t.create("desktopAudioCable", {
       fromSocket: mixerMaster.fields.insertOutput.location,
       toSocket: curve.fields.audioInput.location,
+      colorIndex: getNextColorIndex(),
     })
 
   const audioCableQuantumIn =
@@ -211,6 +216,7 @@ export const createMasterInsertChain = (
     t.create("desktopAudioCable", {
       fromSocket: curve.fields.audioOutput.location,
       toSocket: quantum.fields.audioInput.location,
+      colorIndex: getNextColorIndex(),
     })
 
   const audioCableQuantumOut =
@@ -218,6 +224,7 @@ export const createMasterInsertChain = (
     t.create("desktopAudioCable", {
       fromSocket: quantum.fields.audioOutput.location,
       toSocket: mixerMaster.fields.insertInput.location,
+      colorIndex: getNextColorIndex(),
     })
 
   return {
@@ -261,6 +268,7 @@ export const createAuxFlanger = (
     t.create("desktopAudioCable", {
       fromSocket: aux2.fields.insertOutput.location,
       toSocket: flanger.fields.audioInput.location,
+      colorIndex: getNextColorIndex(),
     })
 
   const audioCablePanoramaIn =
@@ -268,6 +276,7 @@ export const createAuxFlanger = (
     t.create("desktopAudioCable", {
       fromSocket: flanger.fields.audioOutput.location,
       toSocket: panorama.fields.audioInput.location,
+      colorIndex: getNextColorIndex(),
     })
 
   const audioCablePanoramaOut =
@@ -275,6 +284,7 @@ export const createAuxFlanger = (
     t.create("desktopAudioCable", {
       fromSocket: panorama.fields.audioOutput.location,
       toSocket: aux2.fields.insertInput.location,
+      colorIndex: getNextColorIndex(),
     })
 
   return {

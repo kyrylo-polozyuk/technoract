@@ -201,6 +201,7 @@ export const createBass = (
     t.create("desktopAudioCable", {
       fromSocket: pulverisateur.fields.audioOutput.location,
       toSocket: pulsar.fields.audioInput.location,
+      colorIndex: getNextColorIndex(),
     })
 
   const audioCablePulsarOut =
@@ -208,6 +209,7 @@ export const createBass = (
     t.create("desktopAudioCable", {
       fromSocket: pulsar.fields.audioOutput.location,
       toSocket: channel.fields.audioInput.location,
+      colorIndex: getNextColorIndex(),
     })
 
   return {

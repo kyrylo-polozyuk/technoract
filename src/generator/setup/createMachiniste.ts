@@ -164,6 +164,7 @@ export const createMachiniste = (
       t.create("desktopAudioCable", {
         fromSocket,
         toSocket,
+        colorIndex: getNextColorIndex(),
       })
   }
 
@@ -193,6 +194,7 @@ export const createMachinisteGroupCompressor = (
     t.create("desktopAudioCable", {
       fromSocket: mixerGroup.fields.insertOutput.location,
       toSocket: gravity.fields.audioInput.location,
+      colorIndex: getNextColorIndex(),
     })
 
   const audioCableOut =
@@ -200,6 +202,7 @@ export const createMachinisteGroupCompressor = (
     t.create("desktopAudioCable", {
       fromSocket: gravity.fields.audioOutput.location,
       toSocket: mixerGroup.fields.insertInput.location,
+      colorIndex: getNextColorIndex(),
     })
 
   return { gravity, audioCableIn, audioCableOut }

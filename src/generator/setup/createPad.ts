@@ -161,6 +161,7 @@ export const createPad = (
     t.create("desktopAudioCable", {
       fromSocket: pulverisateur.fields.audioOutput.location,
       toSocket: phaser.fields.audioInput.location,
+      colorIndex: getNextColorIndex(),
     })
 
   const audioCableChorusIn =
@@ -168,6 +169,7 @@ export const createPad = (
     t.create("desktopAudioCable", {
       fromSocket: phaser.fields.audioOutput.location,
       toSocket: chorus.fields.audioInput.location,
+      colorIndex: getNextColorIndex(),
     })
 
   const audioCablePulsarIn =
@@ -175,6 +177,7 @@ export const createPad = (
     t.create("desktopAudioCable", {
       fromSocket: chorus.fields.audioOutput.location,
       toSocket: pulsar.fields.audioInput.location,
+      colorIndex: getNextColorIndex(),
     })
 
   const audioCableQuasarIn =
@@ -182,6 +185,7 @@ export const createPad = (
     t.create("desktopAudioCable", {
       fromSocket: pulsar.fields.audioOutput.location,
       toSocket: quasar.fields.audioInput.location,
+      colorIndex: getNextColorIndex(),
     })
 
   const audioCableQuasarOut =
@@ -189,6 +193,7 @@ export const createPad = (
     t.create("desktopAudioCable", {
       fromSocket: quasar.fields.audioOutput.location,
       toSocket: channel.fields.audioInput.location,
+      colorIndex: getNextColorIndex(),
     })
 
   return {

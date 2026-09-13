@@ -1,69 +1,44 @@
-# React + TypeScript + Vite
+## Audiotool Setup
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Before running the app, you need to configure OAuth with the Audiotool Developer Dashboard.
 
-Currently, two official plugins are available:
+### 1. Create an Audiotool account
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+If you don’t have one yet, sign up at [Audiotool Beta](https://beta.audiotool.com/).
 
-## Expanding the ESLint configuration
+### 2. Register your app and get a Client ID
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. Go to the [Audiotool Developer Dashboard](https://developer.audiotool.com/)
+2. Open [Applications](https://developer.audiotool.com/applications) (or “My Apps”)
+3. Create a new application
+4. Fill in:
+   - **Name** / **Description** / **Website**: Any values you like
+   - **Redirect URIs**: `http://127.0.0.1:5173/` (matches the Vite dev server)
+   - **Scopes**: `project:write`
+5. Save the app and copy its **Client ID**
 
-```js
-export default tseslint.config([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
+### 3. Configure the app
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+Copy `.env.example` to `.env` and set your credentials:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+cp .env.example .env
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Edit `.env`:
 
-```js
-// eslint.config.js
-import reactX from "eslint-plugin-react-x"
-import reactDom from "eslint-plugin-react-dom"
-
-export default tseslint.config([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs["recommended-typescript"],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+VITE_CLIENT_ID=your-actual-client-id-from-dashboard
+VITE_REDIRECT_URL=http://127.0.0.1:5173/
+```
+
+### 4. Run the app
+
+```bash
+npm install
+npm run dev
+```
+
+Open http://127.0.0.1:5173/. Click **Log in with Audiotool** — you’ll be redirected to Audiotool to authorize the app, then back to your app where you can connect to a project.
+
+For more details, see the [Getting Started guide](https://developer.audiotool.com/js-package-documentation/documents/Getting_Started.html) and [JS documentation](https://developer.audiotool.com/js-package-documentation/).
